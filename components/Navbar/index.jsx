@@ -20,9 +20,9 @@ const Navbar = () => {
     <nav className={`sticky top-0 w-full ${pathname == "/" ? transparent : "bg-white shadow-xl text-black"} flex justify-between md:px-8 sm:px-4 px-2 h-14 items-center transition duration-300`}>
       <img src="/img/" alt="Logo" className="h-9 w-9"/>
       <div className="flex items-center md:space-x-4 space-x-2">
+        <NavItem href="#">Contents</NavItem>
         <NavItem href="#">About</NavItem>
         <NavItem href="#">Members</NavItem>
-        <NavItem href="#">Contents</NavItem>
       </div>
     </nav>
   )
