@@ -8,7 +8,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className="font-poppins">
         <Navbar/>
         <main>
