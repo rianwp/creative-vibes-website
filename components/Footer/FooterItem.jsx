@@ -1,7 +1,7 @@
-const FooterItem = ({children, href}) => {
+const FooterItem = ({children, href, target}) => {
   return (
       href ? 
-      <a href={href} target="_blank" className="text-white opacity-80 hover:opacity-100 transition duration-300 inline-flex flex-row items-center space-x-2 break-all max-w-fit">
+      <a href={href} target={target} className="text-white opacity-80 hover:opacity-100 transition duration-300 inline-flex flex-row items-center space-x-2 break-all max-w-fit">
         {children}
       </a>
       :
