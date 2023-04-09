@@ -2,7 +2,7 @@
 
 const Error = ({error, reset}) => {
   return (
-    <div className="fixed top-0 w-full h-screen flex items-center justify-center bg-gray-100 z-30">
+    <div className="fixed top-0 w-full h-screen flex items-center justify-center bg-gray-100 z-30 overflow-hidden">
       <div className="flex-col flex">
         <div className="text-5xl font-extrabold mb-5">Terjadi kesalahan</div>
         <div className="self-end">
