@@ -1,8 +1,17 @@
+import { GoPerson } from "react-icons/go"
+
 const Member = ({name, deskripsi, img}) => {
   return (
     <div className="md:w-1/3 sm:w-1/2 w-full sm:p-8 p-4 h-full">
       <div className="rounded-full overflow-hidden w-32 h-32 mx-auto shadow-xl">
-        <img src={img} alt={name} className="object-cover object-center"/>
+        {
+          img === "" || !img ? 
+          <div className="object-cover object-center w-full">
+            <GoPerson className="w-full"/>
+          </div>
+          :
+          <img src={img} alt={name} className="object-cover object-center w-full"/>
+        }
       </div>
       <div className="text-center mt-5">
         <div className="font-semibold text-xl text-black">{name}</div>
