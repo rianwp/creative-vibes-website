@@ -5,7 +5,6 @@ import dateFormat from "@/utils/dateFormat"
 const getPost = async (id) => {
   const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,id,modified_gmt,excerpt,title,link,featured_media`, { 
     next: { revalidate: 60 },
-    cache: "no-store"
   })
   return post.json()
 }
@@ -13,7 +12,6 @@ const getPost = async (id) => {
 const getImage = async (id) => {
   const image = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media/${id}?_fields=id,source_url`, { 
     next: { revalidate: 60 },
-    cache: "no-store"
   })
   return image.json()
 }

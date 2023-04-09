@@ -10,7 +10,6 @@ export const metadata = {
 const getImages = async () => {
   const images = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media?_fields=id,source_url", { 
     next: { revalidate: 60 },
-    cache: "no-store"
   })
   return images.json()
 }
@@ -18,7 +17,6 @@ const getImages = async () => {
 const getPosts = async () => {
   const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,modified_gmt,excerpt,title,link,featured_media", { 
     next: { revalidate: 60 },
-    cache: "no-store"
   })
   return posts.json()
 }
