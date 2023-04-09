@@ -1,5 +1,3 @@
-"use client"
-
 export const metadata = {
   title: "Error",
   description: "Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience.",
