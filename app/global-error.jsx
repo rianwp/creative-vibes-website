@@ -1,4 +1,5 @@
 "use client"
+import "./globals.css"
 import { useEffect } from "react"
 
 const GlobalError = ({error, reset}) => {
