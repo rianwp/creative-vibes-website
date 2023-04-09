@@ -17,7 +17,7 @@ const Navbar = () => {
     }
   })
   return (
-    <nav className={`sticky top-0 w-full ${pathname == "/" ? transparent : "bg-white shadow-xl text-black"} flex justify-between sm:px-8 px-4 h-14 items-center transition duration-300`}>
+    <nav className={`sticky top-0 w-full ${pathname == "/" ? transparent : "bg-white shadow-xl text-black"} flex justify-between sm:px-8 px-4 h-14 items-center transition duration-300 z-10`}>
       <a href="/">
         <img src="/img/logo.png" alt="Logo" className="h-9 w-9"/>
       </a>
