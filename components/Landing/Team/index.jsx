@@ -11,7 +11,7 @@ const Team = () => {
           <Member name="Adrian Wahyu Prasetya" deskripsi="Web Developer" img="/img/adrian.jpg"/>
           <Member name="Adham Faraitodi" deskripsi="Webmaster" img="/img/adham.jpeg"/>
           <Member name="Bagas Ardianto" deskripsi="Content Writer" img="/img/bagas.png"/>
-          <Member name="Muhammad Jaelani AS" deskripsi="Content Creator" img="/img/jaelani.jpg"/>
+          <Member name="Muhammad Jaelani AS" deskripsi="Content Creator" img="/img/jaelani.jpeg"/>
           <Member name="Muhammad Alfian SA" deskripsi="Content Creator" img=""/>
         </div>
       </div>
