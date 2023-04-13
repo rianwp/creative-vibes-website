@@ -9,7 +9,7 @@ const CommentBox = ({img, nama, comment, tanggal}) => {
           <div className="text-base font-semibold text-black">{nama}</div>
           <div className="text-sm text-gray-400">{tanggal}</div>
         </div>
-        <div className="text-sm text-black text-justify" dangerouslySetInnerHTML={{__html: comment}}/>
+        <div className="text-base text-black text-justify leading-loose" dangerouslySetInnerHTML={{__html: comment}}/>
       </div>
     </div>
   )
