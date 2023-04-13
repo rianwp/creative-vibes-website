@@ -14,6 +14,6 @@ const InputBox = forwardRef(({label, placeholder, textarea, errorMsg, isError}, 
       null
     }
   </div>
-})  
-InputBox.displayName = "InputBox"
+})
+
 export default InputBox
