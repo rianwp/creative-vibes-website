@@ -48,7 +48,7 @@ const CommentInput = () => {
     }
   }
   return (
-    <form onSubmit={onSubmitHandler} className="w-full mt-5 flex flex-col space-y-4">
+    <form onSubmit={onSubmitHandler} className="w-full mt-10 flex flex-col space-y-4">
       <div className="text-black font-semibold mb-2 text-xl">Tulis Komentar Anda</div>
       <InputBox isError={!validEmail} errorMsg="Email tidak valid" label="Email" placeholder="Silahkan masukan email" ref={email}/>
       <InputBox isError={!validNama} errorMsg="Nama tidak boleh kosong" label="Nama" placeholder="Silahkan masukan nama" ref={nama}/>
