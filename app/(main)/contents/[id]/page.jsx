@@ -2,11 +2,12 @@ import Comments from "@/components/Contents/Comments"
 import MainContent from "@/components/Contents/Content/MainContent"
 import SectionTitle from "@/components/SectionTitle"
 import dateFormat from "@/utils/dateFormat"
+import { convert } from "html-to-text"
 
 export const revalidate = 60*5
 
 const getPost = async (id) => {
-  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,date_gmt,id,,content,title,link,featured_media`, { 
+  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,date_gmt,id,content,title,link,featured_media`, { 
     // cache: "no-cache",
   })
   return post.json()
@@ -23,7 +24,9 @@ export const generateMetadata = async ({params}) => {
   const post = await getPost(params.id)
   return {
     title: post.title.rendered,
-    description: "Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience."
+    description: convert(post.content.rendered, {
+      wordwrap: null,
+    }).substring(0,155)
   }
 }
 
