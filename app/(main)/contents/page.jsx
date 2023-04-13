@@ -7,16 +7,18 @@ export const metadata = {
   description: "Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience.",
 }
 
+export const revalidate = 60*5
+
 const getImages = async () => {
   const images = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media?_fields=id,source_url", { 
-    cache: "no-cache",
+    // cache: "no-cache",
   })
   return images.json()
 }
 
 const getPosts = async () => {
   const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,date_gmt,title,link,featured_media", { 
-    cache: "no-cache",
+    // cache: "no-cache",
   })
   return posts.json()
 }
