@@ -1,6 +1,6 @@
 import { forwardRef } from "react"
 
-const InputBox = forwardRef(({label, placeholder, textarea, errorMsg, isError}, ref) => {
+const InputBox = forwardRef(({label, placeholder, textarea, errorMsg, isError}, ref) => (
   <div className="flex flex-col space-y-1.5">
     <label className="text-sm text-black font-semibold">{label}</label>
     {textarea ? 
@@ -14,6 +14,6 @@ const InputBox = forwardRef(({label, placeholder, textarea, errorMsg, isError}, 
       null
     }
   </div>
-})
+))
 
 export default InputBox
