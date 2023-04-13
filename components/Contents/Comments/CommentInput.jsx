@@ -1,9 +1,10 @@
 "use client"
 
-import { useRef, useState, use } from "react"
+import { useRef, useState } from "react"
 import InputBox from "./InputBox"
 import validateEmail from "@/utils/validateEmail"
 import { usePathname, useRouter } from "next/navigation"
+import got from "got"
 
 const CommentInput = () => {
   const [validEmail, setValidEmail] = useState(true)
@@ -42,14 +43,21 @@ const CommentInput = () => {
         content: comment.current.value
       }
       try {
-        await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments", { 
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        })
+        // await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments", { 
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json"
+        //   },
+        //   body: JSON.stringify(data)
+        // })
+        const {data} = await got.post("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments", {
+          json: {
+            data
+          }
+        }).json()
+        console.log(data)
         router.refresh()
+
       } catch (error) {
         
       }
