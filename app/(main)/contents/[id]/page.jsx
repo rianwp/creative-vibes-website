@@ -4,15 +4,15 @@ import SectionTitle from "@/components/SectionTitle"
 import dateFormat from "@/utils/dateFormat"
 
 const getPost = async (id) => {
-  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,id,date_gmt,excerpt,title,link,featured_media`, { 
-    next: { revalidate: 60*10 },
+  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,id,date_gmt,content,title,link,featured_media`, { 
+    cache: "no-cache",
   })
   return post.json()
 }
 
 const getImage = async (id) => {
   const image = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media/${id}?_fields=id,source_url`, { 
-    next: { revalidate: 60*10 },
+    cache: "no-cache",
   })
   return image.json()
 }
@@ -36,7 +36,7 @@ const Content = async ({params}) => {
           tanggal={dateFormat(post.date_gmt)}
           img={image.source_url}
           alt={post.title.rendered}
-          text={post.excerpt.rendered}
+          text={post.content.rendered}
         />
         <Comments id={params.id}/>
       </div>
