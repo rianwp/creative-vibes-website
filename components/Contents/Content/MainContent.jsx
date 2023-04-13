@@ -10,7 +10,7 @@ const MainContent = ({tanggal, img, alt, text}) => {
       <div className="w-full aspect-video rounded-lg overflow-hidden mb-5">
         <img src={img} alt={alt} className="w-full object-cover object-center" referrerPolicy="no-referrer"/>
       </div>
-      <div className="text-justify leading-loose" dangerouslySetInnerHTML={{__html: text}}/>
+      <div className="text-justify leading-loose wp-img" dangerouslySetInnerHTML={{__html: text}}/>
     </div>
   )
 }

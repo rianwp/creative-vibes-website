@@ -13,7 +13,7 @@ const Comments = async ({id}) => {
   const comments = await getComments(id)
 
   return (
-    <div className="w-full mt-10">
+    <div className="w-full mt-20">
       <div className="text-xl text-black font-semibold mb-2">Post ini memiliki {comments.length} komentar</div>
       <div className="flex flex-col space-y-4">
         {comments.map((comment) => 
