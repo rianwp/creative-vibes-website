@@ -4,7 +4,6 @@ import { useRef, useState } from "react"
 import InputBox from "./InputBox"
 import validateEmail from "@/utils/validateEmail"
 import { usePathname, useRouter } from "next/navigation"
-import got from "got"
 
 const CommentInput = () => {
   const [validEmail, setValidEmail] = useState(true)
@@ -36,26 +35,10 @@ const CommentInput = () => {
     }
 
     if(validEmail && validNama){
-      const data = {
-        post: path.split("/")[2],
-        author_email: email.current.value,
-        author_name: nama.current.value,
-        content: comment.current.value
-      }
       try {
-        // await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments", { 
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json"
-        //   },
-        //   body: JSON.stringify(data)
-        // })
-        const {data} = await got.post("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments", {
-          json: {
-            data
-          }
-        }).json()
-        console.log(data)
+        await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${path.split("/")[2]}`, { 
+          method: "POST",
+        })
         router.refresh()
 
       } catch (error) {

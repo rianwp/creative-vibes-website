@@ -26,7 +26,11 @@ const Contents = async () => {
   const images = await getImages()
   const findImage = (id) => {
     const index = images.findIndex(image => image.id === id)
-    return images[index].source_url
+    if(index < 0){
+      return ""
+    } else{
+      return images[index].source_url
+    }
   }
   return(
     <div className="w-full">
