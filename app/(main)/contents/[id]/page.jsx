@@ -1,9 +1,10 @@
+import Comments from "@/components/Contents/Comments"
 import MainContent from "@/components/Contents/Content/MainContent"
 import SectionTitle from "@/components/SectionTitle"
 import dateFormat from "@/utils/dateFormat"
 
 const getPost = async (id) => {
-  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,id,modified_gmt,excerpt,title,link,featured_media`, { 
+  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,id,date_gmt,excerpt,title,link,featured_media`, { 
     next: { revalidate: 60*10 },
   })
   return post.json()
@@ -32,11 +33,12 @@ const Content = async ({params}) => {
      <div className="py-32 lg:w-3/4 md:w-full sm:w-full w-full mx-auto sm:px-8 px-4">
         <SectionTitle>{post.title.rendered}</SectionTitle>
         <MainContent
-          tanggal={dateFormat(post.modified_gmt)}
+          tanggal={dateFormat(post.date_gmt)}
           img={image.source_url}
           alt={post.title.rendered}
           text={post.excerpt.rendered}
         />
+        <Comments id={params.id}/>
       </div>
     </div>
   )

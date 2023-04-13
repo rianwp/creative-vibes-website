@@ -15,7 +15,7 @@ const getImages = async () => {
 }
 
 const getPosts = async () => {
-  const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,modified_gmt,excerpt,title,link,featured_media", { 
+  const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,date_gmt,excerpt,title,link,featured_media", { 
     next: { revalidate: 60*10 },
   })
   return posts.json()
@@ -38,7 +38,7 @@ const Contents = async () => {
               img={findImage(post.featured_media)}
               href={`/contents/${post.id}`}
               judul={post.title.rendered}
-              tanggal={dateFormat(post.modified_gmt)}
+              tanggal={dateFormat(post.date_gmt)}
             />
           )}
         </div>
