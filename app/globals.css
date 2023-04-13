@@ -7,6 +7,10 @@
 .hero-responsive{
   @apply lg:h-[700px] md:h-[600px] h-[500px];
 }
-div.wp-img img{
+div.wordpress img{
   @apply rounded-lg w-full object-cover object-center;
+}
+
+div.wordpress p strong{
+  @apply leading-loose;
 }
