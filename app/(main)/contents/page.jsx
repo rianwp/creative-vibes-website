@@ -10,14 +10,14 @@ export const metadata = {
 export const revalidate = 60*5
 
 const getImages = async () => {
-  const images = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media?_fields=id,source_url", { 
+  const images = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media?_fields=source_url,id", { 
     // cache: "no-cache",
   })
   return images.json()
 }
 
 const getPosts = async () => {
-  const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,date_gmt,title,link,featured_media", { 
+  const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,title,link,featured_media,date_gmt", { 
     // cache: "no-cache",
   })
   return posts.json()

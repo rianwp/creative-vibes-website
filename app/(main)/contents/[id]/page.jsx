@@ -6,14 +6,14 @@ import dateFormat from "@/utils/dateFormat"
 export const revalidate = 60*5
 
 const getPost = async (id) => {
-  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,id,date_gmt,content,title,link,featured_media`, { 
+  const post = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts/${id}?_fields=author,date_gmt,id,,content,title,link,featured_media`, { 
     // cache: "no-cache",
   })
   return post.json()
 }
 
 const getImage = async (id) => {
-  const image = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media/${id}?_fields=id,source_url`, { 
+  const image = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media/${id}?_fields=source_url,id`, { 
     // cache: "no-cache",
   })
   return image.json()
