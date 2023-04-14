@@ -25,8 +25,8 @@ const Comments = async ({id}) => {
           />
         )}
       </div>
-      <div className="mt-10">
-        <div className="text-black font-semibold mb-2 text-xl">Tulis Komentar Anda</div>
+      <div className="mt-16">
+        <div className="text-black font-semibold mb-5 text-xl">Tulis Komentar Anda</div>
         <CommentInput/>   
       </div>
     </div>
