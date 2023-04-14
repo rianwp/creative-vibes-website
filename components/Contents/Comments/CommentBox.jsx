@@ -1,7 +1,7 @@
 const CommentBox = ({img, nama, comment, tanggal}) => {
   return (
     <div className="w-full flex flex-row items-start sm:space-x-4 space-x-0">
-      <div className="w-32 aspect-square rounded-full overflow-hidden hidden sm:block m-1">
+      <div className="w-2/12 aspect-square rounded-full overflow-hidden hidden sm:block m-1">
         <img className="w-full object-cover object-center" src={img} alt={nama}/>
       </div>
       <div className="w-full">
@@ -10,6 +10,7 @@ const CommentBox = ({img, nama, comment, tanggal}) => {
           <div className="text-sm text-gray-400">{tanggal}</div>
         </div>
         <div className="text-base text-black text-justify" dangerouslySetInnerHTML={{__html: comment}}/>
+        {/* Tombol reply dan Nested Comment <CommentBox/> */}
       </div>
     </div>
   )
