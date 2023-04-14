@@ -1,7 +1,7 @@
 const CommentBox = ({img, nama, comment, tanggal}) => {
   return (
     <div className="w-full flex flex-row items-start sm:space-x-4 space-x-0">
-      <div className="w-[10%] aspect-square rounded-full overflow-hidden hidden sm:block m-1">
+      <div className="w-20 aspect-square rounded-full overflow-hidden hidden sm:block m-1">
         <img className="w-full object-cover object-center" src={img} alt={nama}/>
       </div>
       <div className="w-full">
