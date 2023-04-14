@@ -38,19 +38,15 @@ const CommentInput = () => {
   useEffect(()=>{
     if(validEmail && validNama && isClicked){
       setIsLoading(true)
-      try {
-        fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${path.split("/")[2]}`, { 
-          method: "POST",
-        }).then(()=>{
-          setIsLoading(false)
-          router.refresh()
-        })
-      } catch (error) {
-        
-      }
+      fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${path.split("/")[2]}`, { 
+        method: "POST",
+      }).then(()=>{
+        setIsLoading(false)
+        router.refresh()
+      })
     }
   }, [validEmail,validNama,isClicked])
-  
+
   return (
     <form onSubmit={onSubmitHandler} className="w-full mt-10 flex flex-col space-y-4">
       <div className="text-black font-semibold mb-2 text-xl">Tulis Komentar Anda</div>
