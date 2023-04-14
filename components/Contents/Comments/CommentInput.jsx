@@ -22,13 +22,13 @@ const CommentInput = () => {
     event.preventDefault()
     setIsClicked(true)
   
-    if((!validateEmail(email.current.value || email.current.value === "") && isClicked)){
+    if(!validateEmail(email.current.value || email.current.value == "")){
       setValidEmail(false)
     } else{
       setValidEmail(true)
     }
 
-    if(nama.current.value === "" && isClicked){
+    if(nama.current.value == ""){
       setValidNama(false)
     } else{
       setValidNama(true)
