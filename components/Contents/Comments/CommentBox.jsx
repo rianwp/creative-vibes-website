@@ -5,7 +5,7 @@ const CommentBox = ({img, nama, comment, tanggal}) => {
         <img className="w-full object-cover object-center" src={img} alt={nama}/>
       </div>
       <div className="w-full">
-        <div className="flex flex-row justify-between items-center mb-2 flex-wrap">
+        <div className="flex flex-row justify-between items-center mb-1 flex-wrap">
           <div className="text-base font-semibold text-black">{nama}</div>
           <div className="text-sm text-gray-400">{tanggal}</div>
         </div>
