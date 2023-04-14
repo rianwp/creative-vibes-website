@@ -22,13 +22,13 @@ const CommentInput = () => {
     event.preventDefault()
     setIsClicked(true)
   
-    if(!validateEmail(email.current.value || email.current.value === "")){
+    if((!validateEmail(email.current.value || email.current.value === "") && isClicked)){
       setValidEmail(false)
     } else{
       setValidEmail(true)
     }
 
-    if(nama.current.value === ""){
+    if(nama.current.value === "" && isClicked){
       setValidNama(false)
     } else{
       setValidNama(true)
@@ -43,6 +43,10 @@ const CommentInput = () => {
       }).then(()=>{
         setIsLoading(false)
         router.refresh()
+        email.current.value = ""
+        nama.current.value = ""
+        comment.current.value = ""
+        setIsClicked(false)
       })
     }
   }, [validEmail,validNama,isClicked])
