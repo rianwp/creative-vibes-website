@@ -24,9 +24,9 @@ export const generateMetadata = async ({params}) => {
   const post = await getPost(params.id)
   return {
     title: post.title.rendered,
-    description: convert(post.content.rendered, {
+    description: `creativevibesid | creativevibesid.com | ${convert(post.content.rendered, {
       wordwrap: null,
-    }).substring(0,155)
+    }).substring(0,155)}`
   }
 }
 

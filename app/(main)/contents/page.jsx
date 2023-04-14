@@ -4,7 +4,7 @@ import dateFormat from "@/utils/dateFormat"
 
 export const metadata = {
   title: "Contents",
-  description: "Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience.",
+  description: "cretivevibesid | creativevibesid.com | Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience.",
 }
 
 export const revalidate = 60*5
