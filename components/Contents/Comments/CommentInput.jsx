@@ -5,7 +5,7 @@ import InputBox from "./InputBox"
 import validateEmail from "@/utils/validateEmail"
 import { usePathname, useRouter } from "next/navigation"
 
-const CommentInput = () => {
+const CommentInput = ({parent}) => {
   const [validEmail, setValidEmail] = useState(true)
   const [validNama, setValidNama] = useState(true)
   const [isClicked, setIsClicked] = useState(false)
@@ -38,7 +38,7 @@ const CommentInput = () => {
   useEffect(()=>{
     if(validEmail && validNama && isClicked){
       setIsLoading(true)
-      fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${path.split("/")[2]}`, { 
+      fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${path.split("/")[2]}&parent=${parent}`, { 
         method: "POST",
       }).then(()=>{
         setIsLoading(false)
