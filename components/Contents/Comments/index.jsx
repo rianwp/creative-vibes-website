@@ -37,7 +37,7 @@ const Comments = async ({id}) => {
             {children.map((childrenComment) => {
               if(childrenComment.parent == parentComment.id){
                 return (
-                  <div className="mt-2" key={childrenComment.id}>
+                  <div className="my-2" key={childrenComment.id}>
                     <CommentBox
                       withReplies={false}
                       id={childrenComment.id}
