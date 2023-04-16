@@ -20,6 +20,13 @@ const getImage = async (id) => {
   return image.json()
 }
 
+const getTags = async (id) => {
+  const tags = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/tags?post=${id}&fields=id,name,slug`, { 
+    // cache: "no-cache",
+  })
+  return tags.json()
+}
+
 export const generateMetadata = async ({params}) => {
   const post = await getPost(params.id)
   return {
@@ -32,6 +39,7 @@ export const generateMetadata = async ({params}) => {
 
 const Content = async ({params}) => {
   const post = await getPost(params.id)
+  const tags = await getTags(params.id)
   const image = await getImage(post.featured_media)
   return (
     <div className="w-full">
@@ -42,6 +50,7 @@ const Content = async ({params}) => {
           img={image.source_url}
           alt={post.title.rendered}
           text={post.content.rendered}
+          tags={tags}
         />
         <Comments id={params.id}/>
       </div>
