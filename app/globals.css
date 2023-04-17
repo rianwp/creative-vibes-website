@@ -11,6 +11,10 @@ div.wordpress img{
   @apply rounded-lg w-full object-cover object-center;
 }
 
-div.wordpress p strong{
-  @apply leading-loose;
+div.wordpress p {
+  @apply mb-1;
+}
+
+div.wordpress strong {
+  @apply mb-1;
 }
