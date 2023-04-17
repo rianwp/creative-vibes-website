@@ -1,4 +1,5 @@
 import { AiFillCalendar } from "react-icons/ai"
+import TagBox from "../TagBox"
 
 const MainContent = ({tanggal, img, alt, text, tags}) => {
   return (
@@ -9,7 +10,7 @@ const MainContent = ({tanggal, img, alt, text, tags}) => {
           <div>{tanggal}</div>
         </div>
         {tags.map((tag)=>
-          <div key={tag.id} className="bg-gray-400 text-white px-1 rounded-md">{tag.name}</div>
+          <TagBox key={tag.id}>{tag.name}</TagBox> 
         )}
       </div>
       <div className="w-full aspect-video rounded-lg overflow-hidden mb-5">

@@ -17,15 +17,33 @@ const getImages = async () => {
 }
 
 const getPosts = async () => {
-  const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,title,link,featured_media,date_gmt", { 
+  const posts = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/posts?_fields=author,id,title,link,featured_media,date_gmt,tags", { 
     // cache: "no-cache",
   })
   return posts.json()
 }
 
+const getTags = async () => {
+  const tags = await fetch("https://creativevibesid.000webhostapp.com/wp-json/wp/v2/tags?_fields=id,name,slug", { 
+    // cache: "no-cache",
+  })
+  return tags.json()
+}
+
 const Contents = async () => {
   const posts = await getPosts()
   const images = await getImages()
+  const tags = await getTags()
+
+  const findTags = (tagsId) => {
+    const postTags = []
+    tagsId.map((tagId) => {
+      const index = tags.findIndex(tag => tag.id === tagId)
+      postTags.push(tags[index])
+    })
+    return postTags
+  }
+  
   const findImage = (id) => {
     const index = images.findIndex(image => image.id === id)
     if(index < 0){
@@ -45,6 +63,7 @@ const Contents = async () => {
               href={`/contents/${post.id}`}
               judul={post.title.rendered}
               tanggal={dateFormat(post.date_gmt)}
+              tags={findTags(post.tags)}
             />
           )}
         </div>
