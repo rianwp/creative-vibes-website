@@ -12,9 +12,9 @@ div.wordpress img{
 }
 
 div.wordpress p {
-  @apply mb-1;
+  @apply mb-2;
 }
 
 div.wordpress strong {
-  @apply mb-1;
+  @apply mb-2;
 }
