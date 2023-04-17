@@ -14,7 +14,7 @@ const getPost = async (id) => {
 }
 
 const getImage = async (id) => {
-  const image = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media/${id}?_fields=source_url,id`, { 
+  const image = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/media/${id}?_fields=id,source_url`, { 
     // cache: "no-cache",
   })
   return image.json()
