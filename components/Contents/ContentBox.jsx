@@ -4,7 +4,7 @@ const ContentBox = ({img, href, judul, tanggal, tags}) => {
   return (
     <div className="md:w-1/3 sm:w-1/2 w-full sm:p-8 p-4 h-full">
       <a href={href}>
-        <div className="rounded-lg shadow-xl w-full overflow-hidden transition duration-300 hover:bg-gray-100">
+        <div className="rounded-lg shadow-xl w-full overflow-hidden transition duration-300 hover:bg-gray-100 h-full">
           <div className="w-full aspect-video">
             <img src={img} alt={judul} className="w-full object-cover object-center" referrerPolicy="no-referrer"/>
           </div>
