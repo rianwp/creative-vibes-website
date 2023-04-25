@@ -1,5 +1,6 @@
 import { AiFillCalendar } from "react-icons/ai"
 import TagBox from "../TagBox"
+import Image from "next/image"
 
 const MainContent = ({tanggal, img, alt, text, tags}) => {
   return (
@@ -16,7 +17,7 @@ const MainContent = ({tanggal, img, alt, text, tags}) => {
         )}
       </div>
       <div className="w-full aspect-video rounded-lg overflow-hidden mb-5">
-        <img alt={alt} src={img} className="w-full object-cover object-center" referrerPolicy="no-referrer"/>
+        <Image alt={alt} src={img} className="w-full object-cover object-center" referrerPolicy="no-referrer"/>
       </div>
       <div className="text-justify wordpress leading-loose break-words" dangerouslySetInnerHTML={{__html: text}}/>
     </div>

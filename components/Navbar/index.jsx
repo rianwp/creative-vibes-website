@@ -4,6 +4,7 @@ import { useState } from "react"
 import NavItem from "./NavItem"
 import { usePathname } from "next/navigation"
 import { useScrollPosition } from "@n8tb1t/use-scroll-position"
+import Image from "next/image"
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -19,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className={`sticky top-0 w-full ${pathname == "/" ? transparent : "bg-white shadow-xl text-black"} flex justify-between sm:px-8 px-4 h-14 items-center transition duration-300 z-10`}>
       <a href="/">
-        <img src="/img/logo.png" alt="Logo" className="h-9 w-9"/>
+        <Image src="/img/logo.png" alt="Logo" className="h-9 w-9"/>
       </a>
       <div className="flex items-center md:space-x-4 space-x-2">
         <NavItem href="/contents">Contents</NavItem>

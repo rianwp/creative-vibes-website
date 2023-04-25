@@ -1,3 +1,4 @@
+import Image from "next/image"
 import TagBox from "./TagBox"
 
 const ContentBox = ({img, href, judul, tanggal, tags}) => {
@@ -6,7 +7,7 @@ const ContentBox = ({img, href, judul, tanggal, tags}) => {
       <a href={href}>
         <div className="rounded-lg shadow-xl w-full overflow-hidden transition duration-300 hover:bg-gray-100 h-full">
           <div className="w-full aspect-video">
-            <img src={img} alt={judul} className="w-full object-cover object-center" referrerPolicy="no-referrer"/>
+            <Image src={img} alt={judul} className="w-full object-cover object-center" referrerPolicy="no-referrer"/>
           </div>
           <div className="w-full p-4">
             <div className="line-clamp-1 text-base font-semibold text-black mb-1 h-6">{judul}</div>

@@ -2,13 +2,14 @@
 
 import { useState } from "react"
 import CommentInput from "./CommentInput"
+import Image from "next/image"
 
 const CommentBox = ({id, img, nama, comment, tanggal, withReplies, children }) => {
   const [isReplyClicked, setIsReplyClicked] = useState(false)
   return (
     <div className="w-full flex flex-row items-start sm:space-x-4 space-x-0">
       <div className="w-24 aspect-square rounded-full overflow-hidden hidden sm:block">
-        <img className="w-full object-cover object-center" src={img} alt={nama}/>
+        <Image className="w-full object-cover object-center" src={img} alt={nama}/>
       </div>
       <div className="w-full">
         <div className="flex flex-row justify-between items-center mb-1 flex-wrap">

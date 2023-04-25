@@ -1,12 +1,14 @@
+import Image from "next/image"
+
 const Member = ({name, deskripsi, img}) => {
   return (
     <div className="md:w-1/3 sm:w-1/2 w-full sm:p-8 p-4 h-full">
       <div className="rounded-full overflow-hidden w-32 h-32 mx-auto shadow-xl">
         {
           img === "" || !img ? 
-          <img src="/img/person.png" alt={name} className="object-cover object-center w-full"/>
+          <Image src="/img/person.png" alt={name} className="object-cover object-center w-full"/>
           :
-          <img src={img} alt={name} className="object-cover object-center w-full"/>
+          <Image src={img} alt={name} className="object-cover object-center w-full"/>
         }
       </div>
       <div className="text-center mt-5">
