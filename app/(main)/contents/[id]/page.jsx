@@ -30,7 +30,7 @@ const getTags = async (id) => {
 
 export const generateMetadata = async ({params}) => {
   const post = await getPost(params.id)
-  if(post.data.status == 404){
+  if(!post.id){
     return {
       title: "Creative Vibes",
       description: "creativevibesid | creativevibesid.com | Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience."
@@ -48,7 +48,7 @@ export const generateMetadata = async ({params}) => {
 const Content = async ({params}) => {
   const post = await getPost(params.id)
   const tags = await getTags(params.id)
-  if(post.data.status == 404){
+  if(!post.id){
     return <NotFound/>
   } else{
     const image = await getImage(post.featured_media)
