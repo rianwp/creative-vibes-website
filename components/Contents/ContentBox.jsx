@@ -14,8 +14,8 @@ const ContentBox = ({img, href, judul, tanggal, tags}) => {
             <div className="line-clamp-1 text-sm text-gray-400 h-5 mb-1">{tanggal}</div>
             <div className="flex flex-row flex-wrap text-sm">
               {tags.map((tag)=>
-                <div key={tag.id} className="mr-0.5 mb-0.5">
-                  <TagBox>{tag.name}</TagBox>
+                <div key={tag.node.id} className="mr-0.5 mb-0.5">
+                  <TagBox>{tag.node.name}</TagBox>
                 </div>
               )}
             </div>

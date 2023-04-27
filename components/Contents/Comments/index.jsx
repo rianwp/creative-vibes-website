@@ -1,63 +1,91 @@
 import dateFormat from "@/utils/dateFormat"
 import CommentBox from "./CommentBox"
-import CommentInput from "./CommentInput"
+import fetchGraphQL from "@/utils/fetchGraphQL"
 
 const getComments = async (id) => {
-  const comments = await fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?post=${id}&_fields=id,author_name,author_avatar_urls,parent,content,date_gmt,content`, { 
-    cache: "no-cache",
-  })
-  return comments.json()
+  const res = await fetchGraphQL(`
+    query GetComments {
+      post(id: "1", idType: DATABASE_ID) {
+        comments {
+          edges {
+            node {
+              replies {
+                edges {
+                  node {
+                    content(format: RENDERED)
+                    author {
+                      node {
+                        name
+                        avatar {
+                          url
+                        }
+                      }
+                    }
+                    dateGmt
+                    commentId
+                  }
+                }
+              }
+              content(format: RENDERED)
+              author {
+                node {
+                  name
+                  avatar {
+                    url
+                  }
+                }
+              }
+              dateGmt
+              commentId
+              parentId
+            }
+          }
+        }
+      }
+    }`,
+    {
+      variables: {}
+    },
+    "no-cache",
+  )
+  return res.post.comments.edges
 }
 
 const Comments = async ({id}) => {
   const comments = await getComments(id)
-  const parent = []
-  const children = []
-  comments.map((comment) => {
-    if(comment.parent == 0){
-      parent.push(comment)
-    } else{
-      children.push(comment)
-    }
-  })
-  
   return (
-    <div className="w-full mt-20">
+    <>
       <div className="text-xl text-black font-semibold mb-5">Post ini memiliki {comments.length} komentar</div>
       <div className="flex flex-col space-y-4">
-        {parent.map((parentComment) => 
-          <CommentBox key={parentComment.id}
-            withReplies={true}
-            id={parentComment.id}
-            comment={parentComment.content.rendered}
-            img={parentComment.author_avatar_urls[96]}
-            nama={parentComment.author_name}
-            tanggal={dateFormat(parentComment.date_gmt)}
-          >
-            {children.map((childrenComment) => {
-              if(childrenComment.parent == parentComment.id){
-                return (
-                  <div className="ml-2 sm:ml-0 mt-2" key={childrenComment.id}>
+        {comments.map((parentComment) => {
+          if(parentComment.node.parentId == null){
+            return(
+              <CommentBox key={parentComment.node.commentId}
+                withReplies={true}
+                id={parentComment.node.commentId}
+                comment={parentComment.node.content}
+                img={parentComment.node.author.node.avatar.url}
+                nama={parentComment.node.author.node.name}
+                tanggal={dateFormat(parentComment.node.dateGmt)}
+              >
+                {parentComment.node.replies.edges.map((childrenComment) => 
+                  <div className="ml-2 sm:ml-0 mt-2" key={childrenComment.node.commentId}>
                     <CommentBox
                       withReplies={false}
-                      id={childrenComment.id}
-                      comment={childrenComment.content.rendered}
-                      img={childrenComment.author_avatar_urls[96]}
-                      nama={childrenComment.author_name}
-                      tanggal={dateFormat(childrenComment.date_gmt)}
+                      id={childrenComment.node.commentId}
+                      comment={childrenComment.node.content}
+                      img={childrenComment.node.author.node.avatar.url}
+                      nama={childrenComment.node.author.node.name}
+                      tanggal={dateFormat(childrenComment.node.dateGmt)}
                     />
                   </div>
-                )
-              }
-            })}
-          </CommentBox>
-        )}
+                )}
+              </CommentBox>
+            )
+          }
+        })}
       </div>
-      <div className="mt-16">
-        <div className="text-black font-semibold mb-5 text-xl">Tulis Komentar Anda</div>
-        <CommentInput parent={0}/>   
-      </div>
-    </div>
+    </>
   )
 }
 
