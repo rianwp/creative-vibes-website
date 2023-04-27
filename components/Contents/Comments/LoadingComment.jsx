@@ -11,7 +11,7 @@ const LoadingComment = () => {
             <div className="bg-gray-400 h-5 w-16 rounded-lg"/>
             <div className="bg-gray-400 h-5 w-32 rounded-lg"/>
           </div>
-          <div className="bg-gray-400 h-5 w-1/2 rounded-lg"/>
+          <div className="bg-gray-400 h-5 rounded-lg w-1/2"/>
         </div>
       </div>
     </>
