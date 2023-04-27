@@ -3,7 +3,7 @@ const LoadingComment = () => {
     <>
       <div className="text-xl text-black font-semibold mb-5">Komentar</div>
       {[...Array(2)].map((x, i) => 
-        <div className="w-full flex flex-row items-start sm:space-x-4 space-x-0 animate-pulse">
+        <div key={i} className="w-full flex flex-row items-start sm:space-x-4 space-x-0 animate-pulse">
           <div className="w-24 aspect-square rounded-full overflow-hidden hidden sm:block">
             <div className="w-full h-full object-cover object-center bg-gray-400" />
           </div>
