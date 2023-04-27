@@ -1,2 +1,2 @@
-##Creative Vibes
-Sebuah website landing page yang dibuat untuk memenuhi tugas pemasaran digital, yang dibuat menggunakan Next.JS 13 dan REST API Wordpress
+Creative Vibes
+Sebuah website landing page yang dibuat untuk memenuhi tugas pemasaran digital, yang dibuat menggunakan Next.JS 13 dan REST API Wordpress dan experimental GraphQL
