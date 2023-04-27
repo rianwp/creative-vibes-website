@@ -2,6 +2,7 @@ const LoadingComment = () => {
   return (
     <>
       <div className="text-xl text-black font-semibold mb-5">Komentar</div>
+      <div className="flex flex-col space-y-4">
       {[...Array(2)].map((x, i) => 
         <div key={i} className="w-full flex flex-row items-start sm:space-x-4 space-x-0 animate-pulse">
           <div className="w-24 aspect-square rounded-full overflow-hidden hidden sm:block">
@@ -16,6 +17,8 @@ const LoadingComment = () => {
           </div>
         </div>
       )}
+      </div>
+      
     </>
     
   )
