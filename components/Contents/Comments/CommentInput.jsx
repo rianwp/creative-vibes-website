@@ -3,9 +3,9 @@
 import { useRef, useState, useEffect } from "react"
 import InputBox from "./InputBox"
 import validateEmail from "@/utils/validateEmail"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 
-const CommentInput = ({parent}) => {
+const CommentInput = ({parent, postId}) => {
   const [validEmail, setValidEmail] = useState(true)
   const [validNama, setValidNama] = useState(true)
   const [isClicked, setIsClicked] = useState(false)
@@ -13,7 +13,6 @@ const CommentInput = ({parent}) => {
   const email = useRef(null)
   const nama = useRef(null)
   const comment = useRef(null)
-  const path = usePathname()
   const router = useRouter()
   const loading = isLoading ? "block" : "hidden"
   const button = isLoading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
@@ -38,7 +37,7 @@ const CommentInput = ({parent}) => {
   useEffect(()=>{
     if(validEmail && validNama && isClicked){
       setIsLoading(true)
-      fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${path.split("/")[2]}&parent=${parent}`, { 
+      fetch(`https://creativevibesid.000webhostapp.com/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${postId}&parent=${parent}`, { 
         method: "POST",
       }).then(()=>{
         setIsLoading(false)

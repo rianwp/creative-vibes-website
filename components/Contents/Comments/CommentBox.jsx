@@ -4,7 +4,7 @@ import { useState } from "react"
 import CommentInput from "./CommentInput"
 import Image from "next/image"
 
-const CommentBox = ({id, img, nama, comment, tanggal, withReplies, children }) => {
+const CommentBox = ({id, img, nama, comment, tanggal, withReplies, children, postId }) => {
   const [isReplyClicked, setIsReplyClicked] = useState(false)
   return (
     <div className="w-full flex flex-row items-start sm:space-x-4 space-x-0">
@@ -21,7 +21,7 @@ const CommentBox = ({id, img, nama, comment, tanggal, withReplies, children }) =
           <>
             <div className="my-1 flex flex-col space-y-1 items-start">
               <button onClick={() => setIsReplyClicked(!isReplyClicked)} className="text-blue-500 hover:text-blue-600 transition duration-300">Reply</button>
-              {isReplyClicked ? <CommentInput parent={id}/> : null}
+              {isReplyClicked ? <CommentInput parent={id} postId={postId}/> : null}
             </div>
             <div className="flex flex-col w-full">
               {children}

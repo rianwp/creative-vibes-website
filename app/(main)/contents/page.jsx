@@ -16,6 +16,7 @@ const getPosts = async () => {
           node {
             title
             dateGmt
+            slug
             tags {
               edges {
                 node {
@@ -57,7 +58,7 @@ const Contents = async () => {
           {posts.map((post) => 
             <ContentBox key={post.node.postId}
               img={post.node.featuredImage.node.sourceUrl}
-              href={`/contents/${post.node.postId}`}
+              href={`/contents/${post.node.slug}`}
               judul={post.node.title}
               tanggal={dateFormat(post.node.dateGmt)}
               tags={post.node.tags.edges}

@@ -10,10 +10,10 @@ import { convert } from "html-to-text"
 import { Suspense } from "react"
 
 
-const getPost = async (id) => {
+const getPost = async (slug) => {
   const res = await fetchGraphQL(`
     query GetPost {
-      post(id: "${id}", idType: DATABASE_ID) {
+      postBy(slug: "${slug}") {
         dateGmt
         title
         content(format: RENDERED)
@@ -39,8 +39,8 @@ const getPost = async (id) => {
     },
     "default",
   )
-  if(res.post != null && !res.error){
-    return res.post
+  if(res.postBy != null && !res.error){
+    return res.postBy
   } else{
     return {
       error: true
@@ -49,7 +49,7 @@ const getPost = async (id) => {
 }
 
 export const generateMetadata = async ({params}) => {
-  const post = await getPost(params.id)
+  const post = await getPost(params.slug)
   if(post.error){
     return {
       title: "Creative Vibes",
@@ -66,7 +66,7 @@ export const generateMetadata = async ({params}) => {
 }
 
 const Content = async ({params}) => {
-  const post = await getPost(params.id)
+  const post = await getPost(params.slug)
   if(post.error){
     return <NotFound/>
   } else{
@@ -83,11 +83,11 @@ const Content = async ({params}) => {
           />
           <div className="w-full mt-20">
             <Suspense fallback={<LoadingComment/>}>
-              <Comments id={params.id}/>
+              <Comments postId={post.postId}/>
             </Suspense>
             <div className="mt-16">
               <div className="text-black font-semibold mb-5 text-xl">Tulis Komentar Anda</div>
-              <CommentInput parent={0}/>   
+              <CommentInput parent={0} postId={post.postId}/>   
             </div>
           </div>
         </div>

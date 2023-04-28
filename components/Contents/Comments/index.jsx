@@ -2,10 +2,10 @@ import dateFormat from "@/utils/dateFormat"
 import CommentBox from "./CommentBox"
 import fetchGraphQL from "@/utils/fetchGraphQL"
 
-const getComments = async (id) => {
+const getComments = async (postId) => {
   const res = await fetchGraphQL(`
     query GetComments {
-      post(id: "1", idType: DATABASE_ID) {
+      post(id: "${postId}", idType: DATABASE_ID) {
         comments {
           edges {
             node {
@@ -51,8 +51,8 @@ const getComments = async (id) => {
   return res.post.comments.edges
 }
 
-const Comments = async ({id}) => {
-  const comments = await getComments(id)
+const Comments = async ({postId}) => {
+  const comments = await getComments(postId)
   return (
     <>
       <div className="text-xl text-black font-semibold mb-5">Post ini memiliki {comments.length} komentar</div>
@@ -67,6 +67,7 @@ const Comments = async ({id}) => {
                 img={parentComment.node.author.node.avatar.url}
                 nama={parentComment.node.author.node.name}
                 tanggal={dateFormat(parentComment.node.dateGmt)}
+                postId={postId}
               >
                 {parentComment.node.replies.edges.map((childrenComment) => 
                   <div className="ml-2 sm:ml-0 mt-2" key={childrenComment.node.commentId}>
@@ -77,6 +78,7 @@ const Comments = async ({id}) => {
                       img={childrenComment.node.author.node.avatar.url}
                       nama={childrenComment.node.author.node.name}
                       tanggal={dateFormat(childrenComment.node.dateGmt)}
+                      postId={postId}
                     />
                   </div>
                 )}
