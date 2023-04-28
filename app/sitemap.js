@@ -4,13 +4,11 @@ const sitemap = async () => {
   const res = await fetchGraphQL(`
     query GetPosts {
       posts {
-        edges {
-          node {
-            title
-            dateGmt
-            slug
-            postId
-          }
+        nodes {
+          title
+          dateGmt
+          slug
+          postId
         }
       }
     }`,
@@ -19,11 +17,11 @@ const sitemap = async () => {
     },
     "default",
   )
-  const allPosts = await res.posts.edges
+  const allPosts = await res.posts.nodes
 
   const posts = allPosts.map((post) => ({
-    url: `https://www.creativevibesid.com/contents/${post.node.slug}`,
-    lastModified: post.node.dateGmt,
+    url: `https://www.creativevibesid.com/contents/${post.slug}`,
+    lastModified: post.dateGmt,
   }));
 
   const routes = ["", "/", "/contents"].map((route) => ({

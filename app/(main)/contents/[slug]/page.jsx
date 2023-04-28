@@ -18,11 +18,9 @@ const getPost = async (slug) => {
         title
         content(format: RENDERED)
         tags {
-          edges {
-            node {
-              id
-              name
-            }
+          nodes {
+            name
+            id
           }
         }
         featuredImage {
@@ -79,7 +77,7 @@ const Content = async ({params}) => {
             img={post.featuredImage.node.sourceUrl}
             alt={post.title}
             text={post.content}
-            tags={post.tags.edges}
+            tags={post.tags.nodes}
           />
           <div className="w-full mt-20">
             <Suspense fallback={<LoadingComment/>}>

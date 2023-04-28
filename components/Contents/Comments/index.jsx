@@ -4,51 +4,48 @@ import fetchGraphQL from "@/utils/fetchGraphQL"
 
 const getComments = async (postId) => {
   const res = await fetchGraphQL(`
-    query GetComments {
-      post(id: "${postId}", idType: DATABASE_ID) {
-        comments {
-          edges {
+  query GetComments {
+    post(id: "${postId}", idType: DATABASE_ID) {
+      comments {
+        nodes {
+          dateGmt
+          parentId
+          author {
             node {
-              replies {
-                edges {
-                  node {
-                    content(format: RENDERED)
-                    author {
-                      node {
-                        name
-                        avatar {
-                          url
-                        }
-                      }
-                    }
-                    dateGmt
-                    commentId
-                  }
-                }
+              name
+              avatar {
+                url
               }
-              content(format: RENDERED)
+            }
+          }
+          commentId
+          replies {
+            nodes {
+              commentId
+              parentId
+              dateGmt
               author {
                 node {
-                  name
                   avatar {
                     url
                   }
+                  name
                 }
               }
-              dateGmt
-              commentId
-              parentId
+              content(format: RENDERED)
             }
           }
+          content(format: RENDERED)
         }
       }
-    }`,
+    }
+  }`,
     {
       variables: {}
     },
     "no-cache",
   )
-  return res.post.comments.edges
+  return res.post.comments.nodes
 }
 
 const Comments = async ({postId}) => {
@@ -58,26 +55,26 @@ const Comments = async ({postId}) => {
       <div className="text-xl text-black font-semibold mb-5">Post ini memiliki {comments.length} komentar</div>
       <div className="flex flex-col space-y-4">
         {comments.map((parentComment) => {
-          if(parentComment.node.parentId == null){
+          if(parentComment.parentId == null){
             return(
-              <CommentBox key={parentComment.node.commentId}
+              <CommentBox key={parentComment.commentId}
                 withReplies={true}
-                id={parentComment.node.commentId}
-                comment={parentComment.node.content}
-                img={parentComment.node.author.node.avatar.url}
-                nama={parentComment.node.author.node.name}
-                tanggal={dateFormat(parentComment.node.dateGmt)}
+                id={parentComment.commentId}
+                comment={parentComment.content}
+                img={parentComment.author.node.avatar.url}
+                nama={parentComment.author.node.name}
+                tanggal={dateFormat(parentComment.dateGmt)}
                 postId={postId}
               >
-                {parentComment.node.replies.edges.map((childrenComment) => 
-                  <div className="ml-2 sm:ml-0 mt-2" key={childrenComment.node.commentId}>
+                {parentComment.replies.nodes.map((childrenComment) => 
+                  <div className="ml-2 sm:ml-0 mt-2" key={childrenComment.commentId}>
                     <CommentBox
                       withReplies={false}
-                      id={childrenComment.node.commentId}
-                      comment={childrenComment.node.content}
-                      img={childrenComment.node.author.node.avatar.url}
-                      nama={childrenComment.node.author.node.name}
-                      tanggal={dateFormat(childrenComment.node.dateGmt)}
+                      id={childrenComment.commentId}
+                      comment={childrenComment.content}
+                      img={childrenComment.author.node.avatar.url}
+                      nama={childrenComment.author.node.name}
+                      tanggal={dateFormat(childrenComment.dateGmt)}
                       postId={postId}
                     />
                   </div>

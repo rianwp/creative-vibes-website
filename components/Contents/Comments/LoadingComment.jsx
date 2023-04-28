@@ -18,7 +18,6 @@ const LoadingComment = () => {
         </div>
       )}
       </div>
-      
     </>
     
   )

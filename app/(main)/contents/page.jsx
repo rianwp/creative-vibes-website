@@ -12,27 +12,23 @@ const getPosts = async () => {
   const res = await fetchGraphQL(`
     query GetPosts {
       posts {
-        edges {
-          node {
-            title
-            dateGmt
-            slug
-            tags {
-              edges {
-                node {
-                  id
-                  name
-                }
-              }
+        nodes {
+          title
+          dateGmt
+          slug
+          tags {
+            nodes {
+              name
+              id
             }
-            featuredImage {
-              node {
-                id
-                sourceUrl(size: MEDIUM_LARGE)
-              }
-            }
-            postId
           }
+          featuredImage {
+            node {
+              id
+              sourceUrl(size: MEDIUM_LARGE)
+            }
+          }
+          postId
         }
       }
     }`,
@@ -42,11 +38,10 @@ const getPosts = async () => {
     "default",
   )
   if(res.posts){
-    return res.posts.edges
+    return res.posts.nodes
   }
   return res
 }
-
 
 const Contents = async () => {
   const posts = await getPosts()
@@ -56,12 +51,12 @@ const Contents = async () => {
         <SectionTitle>Contents</SectionTitle>
         <div className="flex flex-row mt-5 w-full justify-start flex-wrap items-start">
           {posts.map((post) => 
-            <ContentBox key={post.node.postId}
-              img={post.node.featuredImage.node.sourceUrl}
-              href={`/contents/${post.node.slug}`}
-              judul={post.node.title}
-              tanggal={dateFormat(post.node.dateGmt)}
-              tags={post.node.tags.edges}
+            <ContentBox key={post.postId}
+              img={post.featuredImage.node.sourceUrl}
+              href={`/contents/${post.slug}`}
+              judul={post.title}
+              tanggal={dateFormat(post.dateGmt)}
+              tags={post.tags.nodes}
             />
           )}
         </div>

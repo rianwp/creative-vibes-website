@@ -11,8 +11,8 @@ const MainContent = ({tanggal, img, alt, text, tags}) => {
           <div>{tanggal}</div>
         </div>
         {tags.map((tag)=>
-          <div key={tag.node.id} className="mr-2 mb-2">
-            <TagBox>{tag.node.name}</TagBox>
+          <div key={tag.id} className="mr-2 mb-2">
+            <TagBox>{tag.name}</TagBox>
           </div> 
         )}
       </div>
