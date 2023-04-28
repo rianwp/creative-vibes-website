@@ -17,7 +17,7 @@ const ContentBox = ({img, href, judul, tanggal, tags}) => {
           <Image src={img} alt={judul} className="w-full object-cover object-center hover:scale-110 transition duration-300" referrerPolicy="no-referrer"/>
         </a>
         <div className="w-full pt-4 px-4">
-          <a href={href} className="line-clamp-1 text-base font-semibold text-black mb-1 h-6 hover:text-blue-500 transition duration-300">{judul}</a>
+          <a href={href} className="line-clamp-1 text-base font-semibold text-black mb-1 h-6 hover:text-blue-400 transition duration-300">{judul}</a>
           <div className="line-clamp-1 text-sm text-gray-400 h-5 mb-1">{tanggal}</div>
         </div>
         <div className="pb-4 px-4 cursor-pointer">
