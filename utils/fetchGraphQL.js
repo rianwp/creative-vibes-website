@@ -5,7 +5,7 @@ const fetchGraphQL = async (query, { variables } = {}, cacheOption) => {
     method: "POST",
     cache: cacheOption,
     next: {
-      revalidate: 60*60*24
+      revalidate: 60*60
     },
     headers,
     body: JSON.stringify({
