@@ -66,3 +66,25 @@ const Contents = async () => {
 }
 
 export default Contents
+
+// Loading.jsx
+// import SectionTitle from "@/components/SectionTitle"
+
+// const Loading = () => {
+//   return (
+//     <div className="w-full">
+//      <div className="py-32 lg:w-3/4 md:w-full sm:w-full w-full mx-auto sm:px-8 px-4">
+//         <SectionTitle>Contents</SectionTitle>
+//         <div className="flex flex-row mt-5 w-full justify-start flex-wrap items-start animate-pulse">
+//           {[...Array(20)].map((x, i) => 
+//             <div className="md:w-1/3 sm:w-1/2 w-full sm:p-8 p-4 aspect-video h-auto" key={i}>
+//               <div className="rounded-lg shadow-xl w-full overflow-hidden h-full bg-gray-400"/>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Loading
