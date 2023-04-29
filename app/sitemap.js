@@ -21,7 +21,7 @@ const sitemap = async () => {
 
   const posts = allPosts.map((post) => ({
     url: `https://www.creativevibesid.com/contents/${post.slug}`,
-    lastModified: post.dateGmt,
+    lastModified: new Date(post.dateGmt).toISOString(),
   }));
 
   const routes = ["", "/", "/contents"].map((route) => ({
