@@ -1,4 +1,4 @@
-const { default: fetchGraphQL } = require("@/utils/fetchGraphQL");
+import fetchGraphQL from "@/utils/fetchGraphQL"
 
 const sitemap = async () => {
   const res = await fetchGraphQL(`
