@@ -1,4 +1,5 @@
 import "./globals.css"
+import "nprogress/nprogress.css"
 
 const RootLayout = ({ children }) => {
   return (
