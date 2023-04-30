@@ -13,10 +13,9 @@ const ProgressBar = () => {
   useEffect(() => {
     if(isMounted.current){
       if(isRouterChangeStart === true){
-        nProgress.set(0.0)
-        nProgress.set(0.4)
+        nProgress.start()
       } else{
-        nProgress.set(1)
+        nProgress.done()
       }
     } else{
       isMounted.current = true
