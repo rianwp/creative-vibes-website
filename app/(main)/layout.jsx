@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { Analytics } from "@vercel/analytics/react"
 
-
 const Layout = ({ children }) => {
   return (
     <html lang="en" className="scroll-smooth">
