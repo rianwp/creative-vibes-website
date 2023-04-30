@@ -2,24 +2,34 @@
 
 import { usePathname } from "next/navigation"
 import { setGlobalState, useGlobalState } from "@/utils/state"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import nProgress from "nprogress"
 
 const ProgressBar = () => {
   const [ isRouterChangeStart, setIsRouterChangeStart ] = useGlobalState("isRouterChangeStart")
   const pathname = usePathname()
+  const isMounted = useRef(false)
   nProgress.configure({showSpinner:false})
   useEffect(() => {
-    if(isRouterChangeStart === true){
-      nProgress.set(0.0)
-      nProgress.set(0.4)
+    if(isMounted.current){
+      if(isRouterChangeStart === true){
+        nProgress.set(0.0)
+        nProgress.set(0.4)
+      } else{
+        nProgress.set(1)
+      }
     } else{
-      nProgress.set(1)
+      isMounted.current = true
     }
   }, [isRouterChangeStart])
   
   useEffect(() => {
-    setGlobalState("isRouterChangeStart", false)
+    if(isMounted.current){
+      setGlobalState("isRouterChangeStart", false)
+    } else{
+      isMounted.current = true
+    }
+    
   },[pathname])
   return ( 
     <></>
