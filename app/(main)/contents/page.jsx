@@ -1,5 +1,4 @@
 import ContentBox from "@/components/Contents/ContentBox"
-import ProgressBar from "@/components/ProgressBar"
 import SectionTitle from "@/components/SectionTitle"
 import dateFormat from "@/utils/dateFormat"
 import fetchGraphQL from "@/utils/fetchGraphQL"
@@ -48,7 +47,6 @@ const Contents = async () => {
   const posts = await getPosts()
   return(
     <div className="w-full">
-      <ProgressBar/>
       <div className="py-32 lg:w-3/4 md:w-full sm:w-full w-full mx-auto sm:px-8 px-4">
         <SectionTitle>Contents</SectionTitle>
         <div className="flex flex-row mt-5 w-full justify-start flex-wrap items-start">
