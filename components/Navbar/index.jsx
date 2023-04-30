@@ -26,8 +26,8 @@ const Navbar = () => {
       </Link>
       <div className="flex items-center md:space-x-4 space-x-2">
         <NavItem onClick={() => setRouterChange(pathname, "/contents")}  href="/contents">Contents</NavItem>
-        <NavItem href="/#about">About</NavItem>
-        <NavItem href="/#team">Team</NavItem>
+        <NavItem onClick={() => setRouterChange(pathname, "/")} href="/#about">About</NavItem>
+        <NavItem onClick={() => setRouterChange(pathname, "/")} href="/#team">Team</NavItem>
       </div>
     </nav>
   )

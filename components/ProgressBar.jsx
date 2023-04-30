@@ -29,7 +29,6 @@ const ProgressBar = () => {
     } else{
       isMounted.current = true
     }
-    
   },[pathname])
   return ( 
     <></>
