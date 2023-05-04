@@ -6,9 +6,9 @@ const Member = ({name, deskripsi, img}) => {
       <div className="rounded-full overflow-hidden w-32 h-32 mx-auto shadow-xl">
         {
           img === "" || !img ? 
-          <Image src="/img/person.png" alt={name} className="object-cover object-center w-full"/>
+          <Image priority={true} src="/img/person.png" alt={name} className="object-cover object-center w-full"/>
           :
-          <Image src={img} alt={name} className="object-cover object-center w-full"/>
+          <Image priority={true} src={img} alt={name} className="object-cover object-center w-full"/>
         }
       </div>
       <div className="text-center mt-5">
