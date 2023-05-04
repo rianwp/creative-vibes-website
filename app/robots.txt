@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://creativevibesid.com/sitemap.xml
+Sitemap: https://www.creativevibesid.com/sitemap.xml
