@@ -11,7 +11,7 @@ import { setRouterChange } from "@/utils/state"
 const Navbar = () => {
   const pathname = usePathname()
   const [transition, setTransition] = useState(true)
-  const transparent = transition ? "bg-transparent shadow-none text-white" : "bg-white shadow-xl text-black"
+  const transparent = transition ? "bg-transparent shadow-none text-white" : "bg-white border-b-gray-300 border-b text-black"
   useScrollPosition(({ prevPos, currPos }) => {
     if(currPos.y == 0){
       setTransition(true)
@@ -20,7 +20,7 @@ const Navbar = () => {
     }
   })
   return (
-    <nav className={`sticky top-0 w-full ${pathname == "/" ? transparent : "bg-white shadow-xl text-black"} flex justify-between sm:px-8 px-4 h-14 items-center transition duration-300 z-50`}>
+    <nav className={`sticky top-0 w-full ${pathname == "/" ? transparent : "bg-white border-b-gray-300 border-b text-black"} flex justify-between sm:px-8 px-4 h-14 items-center transition duration-300 z-50`}>
       <Link onClick={() => setRouterChange(pathname, "/")}  href="/">
         <Image priority={true} src="/img/logo.png" alt="Logo" className="h-9 w-9"/>
       </Link>
