@@ -4,18 +4,16 @@ import { Analytics } from "@vercel/analytics/react"
 import ProgressBar from "@/components/ProgressBar"
 
 const Layout = ({ children }) => {
-  return (
-    <html lang="en" className="scroll-smooth">
-      <body className="font-poppins">
-        <ProgressBar/>
-        <Navbar/>
-        <main>
-          {children}
-          <Analytics/>
-        </main>
-        <Footer/>
-      </body>
-    </html>
+  return (  
+    <>
+      <ProgressBar/>
+      <Navbar/>
+      <main>
+        {children}
+        <Analytics/>
+      </main>
+      <Footer/>
+    </>
   )
 }
 
