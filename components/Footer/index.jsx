@@ -1,17 +1,23 @@
+"use client"
+
+import { usePathname } from "next/navigation"
 import FooterItem from "./FooterItem"
 import FooterTitle from "./FooterTitle"
 import { FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
+import { setRouterChange } from "@/utils/state"
+
 
 const Footer = () => {
+  const pathname = usePathname()
   return (
     <footer className="w-full bg-gray-800">
       <div className=" py-12 sm:w-4/5 w-full mx-auto sm:px-8 px-4 flex flex-row flex-wrap">
         <div className="md:w-1/3 sm:w-1/2 w-full flex flex-col space-y-2 md:py-0 sm:py-4 py-4 px-4">
           <FooterTitle>Navigate</FooterTitle>
-          <FooterItem target="_self" href="/contents">Contents</FooterItem>
-          <FooterItem target="_self" href="/#about">About</FooterItem>
-          <FooterItem target="_self" href="/#team">Team</FooterItem>
+          <FooterItem onClick={() => setRouterChange(pathname, "/contents")} href="/contents">Contents</FooterItem>
+          <FooterItem onClick={() => setRouterChange(pathname, "/")} href="/#about">About</FooterItem>
+          <FooterItem onClick={() => setRouterChange(pathname, "/")} href="/#team">Team</FooterItem>
           
         </div>
         <div className="md:w-1/3 sm:w-1/2 w-full flex flex-col space-y-2 md:py-0 sm;py-4 py-4 px-4">

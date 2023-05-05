@@ -1,9 +1,11 @@
-const FooterItem = ({children, href, target}) => {
+import Link from "next/link"
+
+const FooterItem = ({children, href, target, onClick}) => {
   return (
       href ? 
-      <a href={href} target={target} className="text-white opacity-80 hover:opacity-100 transition duration-300 inline-flex flex-row items-center space-x-2 break-all max-w-fit">
+      <Link href={href} onClick={onClick} target={target} className="text-white opacity-80 hover:opacity-100 transition duration-300 inline-flex flex-row items-center space-x-2 break-all max-w-fit">
         {children}
-      </a>
+      </Link>
       :
       <div className="text-white opacity-80 inline-flex flex-row items-center space-x-2 break-all max-w-fit">
         {children}
