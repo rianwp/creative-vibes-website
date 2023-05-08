@@ -10,13 +10,13 @@ import { setRouterChange } from "@/utils/state"
 
 const Navbar = () => {
   const pathname = usePathname()
-  const [transition, setTransition] = useState(true)
-  const transparent = transition ? "bg-transparent shadow-none text-white" : "bg-white border-b-gray-300 border-b text-black"
+  const [isPositionOnTop, setIsPositionOnTop] = useState(true)
+  const transparent = isPositionOnTop ? "bg-transparent shadow-none text-white" : "bg-white border-b-gray-300 border-b text-black"
   useScrollPosition(({ prevPos, currPos }) => {
     if(currPos.y == 0){
-      setTransition(true)
+      setIsPositionOnTop(true)
     } else {
-      setTransition(false)
+      setIsPositionOnTop(false)
     }
   })
   return (
@@ -25,7 +25,7 @@ const Navbar = () => {
         <Image priority={true} src="/img/logo.png" alt="Logo" className="h-9 w-9"/>
       </Link>
       <div className="flex items-center md:space-x-4 space-x-2">
-        <NavItem onClick={() => setRouterChange(pathname, "/contents")}  href="/contents">Contents</NavItem>
+        <NavItem onClick={() => setRouterChange(pathname, "/contents")} href="/contents">Contents</NavItem>
         <NavItem onClick={() => setRouterChange(pathname, "/")} href="/#about">About</NavItem>
         <NavItem onClick={() => setRouterChange(pathname, "/")} href="/#team">Team</NavItem>
       </div>
