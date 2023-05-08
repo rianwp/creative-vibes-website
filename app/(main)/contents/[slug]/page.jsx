@@ -56,9 +56,10 @@ export const generateMetadata = async ({params}) => {
   } else{
     return {
       title: post.title,
-      description: `creativevibesid | creativevibesid.com | ${convert(post.content, {
-        wordwrap: null,
-      }).substring(0,155)}`
+      // description: `creativevibesid | creativevibesid.com | ${convert(post.content, {
+      //   wordwrap: null,
+      // }).substring(0,155)}`
+      description: "creativevibesid | creativevibesid.com | Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience."
     }
   }
 }
