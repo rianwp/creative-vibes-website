@@ -57,9 +57,6 @@ export const generateMetadata = async ({params}) => {
   } else{
     return {
       title: post.title,
-      // description: `creativevibesid | creativevibesid.com | ${convert(post.content, {
-      //   wordwrap: null,
-      // }).substring(0,155)}`
       description: getMetaDesc(post.excerpt)
     }
   }
