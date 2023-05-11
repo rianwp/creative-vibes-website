@@ -15,7 +15,7 @@ const sitemap = async () => {
     {
       variables: {}
     },
-    "default",
+    "no-cache",
   )
   const allPosts = await res.posts.nodes
 
