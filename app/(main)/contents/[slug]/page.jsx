@@ -6,7 +6,7 @@ import NotFound from "@/components/Contents/Content/NotFound"
 import SectionTitle from "@/components/SectionTitle"
 import dateFormat from "@/utils/dateFormat"
 import fetchGraphQL from "@/utils/fetchGraphQL"
-import { convert } from "html-to-text"
+import getMetaDesc from "@/utils/getMetaDesc"
 import { Suspense } from "react"
 
 
@@ -17,6 +17,7 @@ const getPost = async (slug) => {
         dateGmt
         title
         content(format: RENDERED)
+        excerpt
         tags {
           nodes {
             name
@@ -56,9 +57,10 @@ export const generateMetadata = async ({params}) => {
   } else{
     return {
       title: post.title,
-      description: `creativevibesid | creativevibesid.com | ${convert(post.content, {
-        wordwrap: null,
-      }).substring(0,155)}`
+      // description: `creativevibesid | creativevibesid.com | ${convert(post.content, {
+      //   wordwrap: null,
+      // }).substring(0,155)}`
+      description: getMetaDesc(post.excerpt)
     }
   }
 }
