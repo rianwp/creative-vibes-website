@@ -23,6 +23,10 @@ div.wordpress ol {
   @apply list-decimal;
 }
 
+div.wordpress ul {
+  @apply list-disc;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
