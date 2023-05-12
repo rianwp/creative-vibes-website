@@ -4,9 +4,6 @@ const fetchGraphQL = async (query, { variables } = {}, cacheOption) => {
   const res = await fetch("https://creativevibesid.000webhostapp.com/graphql", {
     method: "POST",
     cache: cacheOption,
-    next: {
-      revalidate: 60*60
-    },
     headers,
     body: JSON.stringify({
       query,
