@@ -11,26 +11,26 @@ import { Suspense } from "react"
 
 export const revalidate = 3600
 
-const getPostsSlug = async () => {
-  const res = await fetchGraphQL(`
-    query GetPostsSlug {
-      posts {
-        nodes {
-          slug
-          postId
-        }
-      }
-    }`,
-    {
-      variables: {}
-    },
-    "default",
-  )
-  if(res.posts){
-    return res.posts.nodes
-  }
-  return res
-}
+// const getPostsSlug = async () => {
+//   const res = await fetchGraphQL(`
+//     query GetPostsSlug {
+//       posts {
+//         nodes {
+//           slug
+//           postId
+//         }
+//       }
+//     }`,
+//     {
+//       variables: {}
+//     },
+//     "default",
+//   )
+//   if(res.posts){
+//     return res.posts.nodes
+//   }
+//   return res
+// }
 
 const getPost = async (slug) => {
   const res = await fetchGraphQL(`
@@ -69,12 +69,12 @@ const getPost = async (slug) => {
   }
 }
 
-export const generateStaticParams = async () => {
-  const posts = await getPostsSlug()
-  return posts.map((post) => {
-    return post.slug
-  })
-}
+// export const generateStaticParams = async () => {
+//   const posts = await getPostsSlug()
+//   return posts.map((post) => {
+//     return post.slug
+//   })
+// }
 
 export const generateMetadata = async ({params}) => {
   const post = await getPost(params.slug)
