@@ -3,8 +3,6 @@ import SectionTitle from "@/components/SectionTitle"
 import dateFormat from "@/utils/dateFormat"
 import fetchGraphQL from "@/utils/fetchGraphQL"
 
-export const revalidate = 3600
-
 export const metadata = {
   title: "Contents",
   description: "creativevibesid | creativevibesid.com | Creative Vibes is the perfect place for youths to learn about design, multimedia, Photoshop and Illustrator to unleash their creativity. Join us and experience a unique learning experience.",

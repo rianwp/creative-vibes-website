@@ -9,28 +9,28 @@ import fetchGraphQL from "@/utils/fetchGraphQL"
 import getMetaDesc from "@/utils/getMetaDesc"
 import { Suspense } from "react"
 
-export const revalidate = 3600
+export const dynamicParams = true
 
-// const getPostsSlug = async () => {
-//   const res = await fetchGraphQL(`
-//     query GetPostsSlug {
-//       posts {
-//         nodes {
-//           slug
-//           postId
-//         }
-//       }
-//     }`,
-//     {
-//       variables: {}
-//     },
-//     "default",
-//   )
-//   if(res.posts){
-//     return res.posts.nodes
-//   }
-//   return res
-// }
+const getPostsSlug = async () => {
+  const res = await fetchGraphQL(`
+    query GetPostsSlug {
+      posts {
+        nodes {
+          slug
+          postId
+        }
+      }
+    }`,
+    {
+      variables: {}
+    },
+    "default",
+  )
+  if(res.posts){
+    return res.posts.nodes
+  }
+  return res
+}
 
 const getPost = async (slug) => {
   const res = await fetchGraphQL(`
@@ -69,12 +69,13 @@ const getPost = async (slug) => {
   }
 }
 
-// export const generateStaticParams = async () => {
-//   const posts = await getPostsSlug()
-//   return posts.map((post) => {
-//     return post.slug
-//   })
-// }
+export const generateStaticParams = async () => {
+  const posts = await getPostsSlug()
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 export const generateMetadata = async ({params}) => {
   const post = await getPost(params.slug)
