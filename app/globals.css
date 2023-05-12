@@ -8,7 +8,7 @@
   @apply lg:h-[700px] md:h-[600px] h-[500px];
 }
 div.wordpress img{
-  @apply rounded-lg w-full object-cover object-center;
+  @apply rounded-lg w-full object-cover object-center my-3;
 }
 
 div.wordpress p {
