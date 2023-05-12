@@ -20,11 +20,11 @@ div.wordpress a {
 }
 
 div.wordpress ol {
-  @apply list-decimal;
+  @apply list-decimal list-inside;
 }
 
 div.wordpress ul {
-  @apply list-disc;
+  @apply list-disc list-inside;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
