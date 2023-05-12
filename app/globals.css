@@ -15,6 +15,10 @@ div.wordpress p {
   @apply mb-3;
 }
 
+div.wordpress a {
+  @apply text-blue-400 hover:text-blue-500 underline transition duration-300;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
