@@ -52,7 +52,7 @@ const Contents = async () => {
         <div className="flex flex-row mt-5 w-full justify-start flex-wrap items-start">
           {posts.map((post) => 
             <ContentBox key={post.postId}
-              img={post.featuredImage.node.sourceUrl}
+              img={post.featuredImage ? post.featuredImage.node.sourceUrl : "/img/no-image.png"}
               href={`/contents/${post.slug}`}
               judul={post.title}
               tanggal={dateFormat(post.dateGmt)}

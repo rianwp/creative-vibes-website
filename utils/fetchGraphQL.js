@@ -1,7 +1,7 @@
 const fetchGraphQL = async (query, { variables } = {}, cacheOption) => {
   const headers = { 'Content-Type': 'application/json' }
 
-  const res = await fetch("https://creativevibesid.000webhostapp.com/graphql", {
+  const res = await fetch(`${process.env.WP_URL}/graphql`, {
     method: "POST",
     cache: cacheOption,
     headers,

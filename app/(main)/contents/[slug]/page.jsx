@@ -103,7 +103,7 @@ const Content = async ({params}) => {
           <SectionTitle>{post.title}</SectionTitle>
           <MainContent
             tanggal={dateFormat(post.dateGmt)}
-            img={post.featuredImage.node.sourceUrl}
+            img={post.featuredImage ? post.featuredImage.node.sourceUrl : "/img/no-image.png"}
             alt={post.title}
             text={post.content}
             tags={post.tags.nodes}
