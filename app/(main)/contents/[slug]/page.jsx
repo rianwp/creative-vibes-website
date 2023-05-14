@@ -58,7 +58,7 @@ const getPost = async (slug) => {
     {
       variables: {}
     },
-    "default",
+    "no-cache",
   )
   if(res.postBy != null && !res.error){
     return res.postBy

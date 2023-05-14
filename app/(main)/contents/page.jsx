@@ -35,7 +35,7 @@ const getPosts = async () => {
     {
       variables: {}
     },
-    "default",
+    "no-cache",
   )
   if(res.posts){
     return res.posts.nodes
