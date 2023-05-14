@@ -16,6 +16,7 @@ const getPosts = async () => {
           title
           dateGmt
           slug
+          postId
           tags {
             nodes {
               name
@@ -28,14 +29,13 @@ const getPosts = async () => {
               sourceUrl(size: MEDIUM_LARGE)
             }
           }
-          postId
         }
       }
     }`,
     {
       variables: {}
     },
-    "no-cache",
+    "default",
   )
   if(res.posts){
     return res.posts.nodes

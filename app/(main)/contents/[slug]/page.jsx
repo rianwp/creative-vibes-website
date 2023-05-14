@@ -40,6 +40,7 @@ const getPost = async (slug) => {
         title
         content(format: RENDERED)
         excerpt
+        postId
         tags {
           nodes {
             name
@@ -52,13 +53,12 @@ const getPost = async (slug) => {
             sourceUrl
           }
         }
-        postId
       }
     }`,
     {
       variables: {}
     },
-    "no-cache",
+    "default",
   )
   if(res.postBy != null && !res.error){
     return res.postBy
