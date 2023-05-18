@@ -17,7 +17,7 @@ const ContentBox = ({img, href, judul, tanggal, tags}) => {
   return (
     <div className="md:w-1/3 sm:w-1/2 w-full sm:p-8 p-4 h-full" >
       <div className="rounded-lg border border-gray-300 w-full overflow-hidden h-full">
-        <Link onClick={() => setRouterChange(pathname, href)}href={href}>
+        <Link onClick={() => setRouterChange(pathname, href)}href={href} className="overflow-hidden">
           <Image priority={true} src={img} alt={judul} className="w-full h-full aspect-video object-cover object-center hover:scale-110 transition duration-300" referrerPolicy="no-referrer"/>
         </Link>
         <div className="w-full pt-4 px-4">
