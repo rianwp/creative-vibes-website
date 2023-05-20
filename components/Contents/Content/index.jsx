@@ -1,11 +1,16 @@
 import { AiFillCalendar } from "react-icons/ai"
+import { GoPerson } from "react-icons/go"
 import TagBox from "../TagBox"
 import Image from "next/image"
 
-const MainContent = ({tanggal, img, alt, text, tags}) => {
+const MainContent = ({tanggal, img, alt, text, tags, author}) => {
   return (
     <div className="mt-5 w-full">
       <div className="flex flex-row items-center mb-2 flex-wrap">
+        <div className="flex flex-row items-center space-x-2 text-gray-400 mr-2 mb-2">
+          <GoPerson/>
+          <div>{author}</div>
+        </div>
         <div className="flex flex-row items-center space-x-2 text-gray-400 mr-2 mb-2">
           <AiFillCalendar/>
           <div>{tanggal}</div>

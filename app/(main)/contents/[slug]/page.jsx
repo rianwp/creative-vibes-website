@@ -47,6 +47,11 @@ const getPost = async (slug) => {
             id
           }
         }
+        author {
+          node {
+            name
+          }
+        }
         featuredImage {
           node {
             id
@@ -107,6 +112,7 @@ const Content = async ({params}) => {
             alt={post.title}
             text={post.content}
             tags={post.tags.nodes}
+            author={post.author ? post.author.node.name : ""}
           />
           <div className="w-full mt-20">
             <Suspense fallback={<LoadingComment/>}>
