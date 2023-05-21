@@ -112,7 +112,7 @@ const Content = async ({params}) => {
             alt={post.title}
             text={post.content}
             tags={post.tags.nodes}
-            author={post.author ? post.author.node.name : ""}
+            author={post.author ? post.author.node.name : "Admin"}
           />
           <div className="w-full mt-20">
             <Suspense fallback={<LoadingComment/>}>

@@ -62,7 +62,7 @@ const Contents = async () => {
               judul={post.title}
               tanggal={dateFormat(post.dateGmt)}
               tags={post.tags.nodes}
-              author={post.author ? post.author.node.name : ""}
+              author={post.author ? post.author.node.name : "Admin"}
             />
           )}
         </div>
