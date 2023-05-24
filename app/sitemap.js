@@ -3,7 +3,7 @@ import fetchGraphQL from "@/utils/fetchGraphQL"
 const sitemap = async () => {
   const res = await fetchGraphQL(`
     query GetPosts {
-      posts {
+      posts(first: 36) {
         nodes {
           title
           dateGmt
