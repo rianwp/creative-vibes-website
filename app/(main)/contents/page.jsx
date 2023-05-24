@@ -10,7 +10,7 @@ export const metadata = {
 
 const getPosts = async () => {
   const res = await fetchGraphQL(`
-    query GetPosts {
+    query GetPosts(first: 36) {
       posts {
         nodes {
           title
