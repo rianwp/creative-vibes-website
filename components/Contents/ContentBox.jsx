@@ -24,7 +24,7 @@ const ContentBox = ({img, href, judul, tanggal, tags, author}) => {
         </Link>
         <div className="w-full pt-4 px-4">
           <Link onClick={() => setRouterChange(pathname, href)} href={href} className="line-clamp-1 text-base font-semibold text-black mb-1 h-6 hover:text-blue-400 transition duration-300">{judul}</Link>
-          <div className="line-clamp-1 text-sm text-gray-400 h-5">{author}</div>
+          <div className="line-clamp-1 text-sm text-gray-400 h-5" dangerouslySetInnerHTML={{__html: author}}/>
           <div className="line-clamp-1 text-sm text-gray-400 h-5 mb-1">{tanggal}</div>
         </div>
         <div className="pb-4 px-4 cursor-pointer">

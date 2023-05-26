@@ -9,7 +9,7 @@ const MainContent = ({tanggal, img, alt, text, tags, author}) => {
       <div className="flex flex-row items-center mb-2 flex-wrap">
         <div className="flex flex-row items-center space-x-2 text-gray-400 mr-2 mb-2 w-full sm:w-auto">
           <GoPerson/>
-          <div>{author}</div>
+          <div dangerouslySetInnerHTML={{__html: author}} />
         </div>
         <div className="flex flex-row items-center space-x-2 text-gray-400 mr-2 mb-2 w-full sm:w-auto">
           <AiFillCalendar/>
