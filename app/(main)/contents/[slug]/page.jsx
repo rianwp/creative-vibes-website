@@ -37,8 +37,8 @@ const getPost = async (slug) => {
     query GetPost {
       postBy(slug: "${slug}") {
         dateGmt
-        title
         content(format: RENDERED)
+        title
         excerpt
         postId
         tags {
