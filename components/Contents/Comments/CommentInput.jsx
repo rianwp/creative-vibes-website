@@ -37,7 +37,7 @@ const CommentInput = ({ parent, postId }) => {
   useEffect(() => {
     if (validEmail && validNama && isClicked) {
       setIsLoading(true)
-      fetch(`${process.env.NEXT_PUBLIC_WP_URL}/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${postId}&parent=${parent}`, {
+      fetch(`${process.env.NEXT_PUBLIC_WP_URL}/index.php/wp-json/wp/v2/comments?author_email=${email.current.value}&author_name=${nama.current.value}&content=${comment.current.value}&post=${postId}&parent=${parent}`, {
         method: "POST",
       }).then(() => {
         setIsLoading(false)
